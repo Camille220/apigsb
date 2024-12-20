@@ -27,10 +27,8 @@ class ServiceFrais
     public function getbyID($id)
     {
         try {
-            $frais=DB::table('frais')
-                ->select ('id_frais', 'anneemois','id_visiteur','nbjustificatifs',
-                    'montantvalide','id_etat')
-                ->first();
+            $frais=Frais::find($id);
+
             return $frais;
         }catch (QueryException $e){
             throw new MonException($e->getMessage(),5);
@@ -46,6 +44,28 @@ class ServiceFrais
             throw new MonException($erreur,5);
         }
     }
+
+
+
+    public function delFrais($id)
+    {
+        try{
+            Frais::destroy($id);
+        }catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

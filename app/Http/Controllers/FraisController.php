@@ -65,6 +65,21 @@ class FraisController extends Controller
 
 
 
+    public function suppr(Request $request)
+    {
+        try{
+            $servicefrais=new ServiceFrais();
+            $id=$request->json('id_frais');
+            $servicefrais->delFrais($id);
+            return response()->json(['message'=>'Suppression réalisée','id_frais'=>$id]);
+
+        }catch (Exception $e){
+            $erreur = $e->getMessage();
+            return response()->json(['erreur'=>$erreur]);
+        }
+    }
+
+
 
 
 

@@ -20,6 +20,7 @@ Route::get('/visiteur/unauth',[VisiteurController::class,"unauthorized"])->name(
 Route::get('/frais/{idFrais}', [FraisController::class,"detail"]);
 Route::post('/frais/ajout',[FraisController::class,"ajout"]);
 Route::post('/frais/modif',[FraisController::class,"modif"]);
+Route::DELETE('/frais/suppr',[FraisController::class,'suppr']);
 
 
 
